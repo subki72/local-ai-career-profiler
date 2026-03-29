@@ -1,0 +1,18 @@
+# --- Python Artefacts ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- VS Code Settings ---
+.vscode/
+
+# --- Environment & Keys ---
+.env
+*.env
+
+# --- Database & Processed Data ---
+data/chroma_db/
+data/processed/
+
+# (Catatan: data/raw_cv/sample_cv.pdf dan data/jobs_database/ tetap dibiarkan 
+# agar orang bisa ngetes project lu pakai CV sample tersebut)
