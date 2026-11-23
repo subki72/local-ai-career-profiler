@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from typing import Final
 
 from src.config import configure_logging
 from src.recommenders.job_matcher import AIJobMatchmaker
@@ -10,65 +11,67 @@ from src.recommenders.job_schema import JobSchema
 
 logger = logging.getLogger(__name__)
 
+DEFAULT_JOBS: Final[tuple[JobSchema, ...]] = (
+    JobSchema(
+        job_id="J001",
+        job_title="Frontend Developer",
+        required_skills=["React", "CSS", "HTML", "TypeScript"],
+        min_experience_years=1,
+        short_description="Build UI for web apps.",
+    ),
+    JobSchema(
+        job_id="J002",
+        job_title="Data Scientist",
+        required_skills=[
+            "Python",
+            "SQL",
+            "Machine Learning",
+            "Data Visualization",
+            "Pandas",
+        ],
+        min_experience_years=1,
+        short_description=(
+            "Analyze business data, build predictive models, and create dashboards."
+        ),
+    ),
+    JobSchema(
+        job_id="J003",
+        job_title="AI & Machine Learning Engineer",
+        required_skills=["Python", "PyTorch", "TensorFlow", "RAG", "LLM", "AWS"],
+        min_experience_years=0,
+        short_description=(
+            "Architect Generative AI systems, deploy ML models via FastAPI, "
+            "and build NLP/Vision pipelines."
+        ),
+    ),
+    JobSchema(
+        job_id="J004",
+        job_title="Cybersecurity Analyst",
+        required_skills=[
+            "Network Security",
+            "Penetration Testing",
+            "Security Fundamentals",
+        ],
+        min_experience_years=1,
+        short_description=(
+            "Protect company infrastructure and analyze system vulnerabilities."
+        ),
+    ),
+    JobSchema(
+        job_id="J005",
+        job_title="Data Engineer",
+        required_skills=["Python", "SQL", "ETL", "PostgreSQL", "Data Pipelines"],
+        min_experience_years=2,
+        short_description=(
+            "Build and maintain robust data architecture and vector databases."
+        ),
+    ),
+)
+
 
 def get_default_jobs() -> list[JobSchema]:
-    """Return the curated baseline list of sample job openings."""
-    return [
-        JobSchema(
-            job_id="J001",
-            job_title="Frontend Developer",
-            required_skills=["React", "CSS", "HTML", "TypeScript"],
-            min_experience_years=1,
-            short_description="Build UI for web apps.",
-        ),
-        JobSchema(
-            job_id="J002",
-            job_title="Data Scientist",
-            required_skills=[
-                "Python",
-                "SQL",
-                "Machine Learning",
-                "Data Visualization",
-                "Pandas",
-            ],
-            min_experience_years=1,
-            short_description=(
-                "Analyze business data, build predictive models, and create dashboards."
-            ),
-        ),
-        JobSchema(
-            job_id="J003",
-            job_title="AI & Machine Learning Engineer",
-            required_skills=["Python", "PyTorch", "TensorFlow", "RAG", "LLM", "AWS"],
-            min_experience_years=0,
-            short_description=(
-                "Architect Generative AI systems, deploy ML models via FastAPI, "
-                "and build NLP/Vision pipelines."
-            ),
-        ),
-        JobSchema(
-            job_id="J004",
-            job_title="Cybersecurity Analyst",
-            required_skills=[
-                "Network Security",
-                "Penetration Testing",
-                "Security Fundamentals",
-            ],
-            min_experience_years=1,
-            short_description=(
-                "Protect company infrastructure and analyze system vulnerabilities."
-            ),
-        ),
-        JobSchema(
-            job_id="J005",
-            job_title="Data Engineer",
-            required_skills=["Python", "SQL", "ETL", "PostgreSQL", "Data Pipelines"],
-            min_experience_years=2,
-            short_description=(
-                "Build and maintain robust data architecture and vector databases."
-            ),
-        ),
-    ]
+    """Return a mutable copy of the curated baseline job openings."""
+    return list(DEFAULT_JOBS)
 
 
 def seed_database(matchmaker: AIJobMatchmaker | None = None) -> int:
