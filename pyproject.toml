@@ -16,7 +16,7 @@ dependencies = [
     "streamlit==1.32.2",
     "requests==2.31.0",
     "pydantic==2.6.4",
-    "langchain-ollama==0.1.0",
+    "langchain-ollama==0.3.10",
     "langchain-huggingface==0.0.3",
     "langchain-chroma==0.1.2",
     "langchain-core==0.2.10",
