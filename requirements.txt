@@ -5,19 +5,12 @@ python-multipart==0.0.9
 streamlit==1.32.2
 requests==2.31.0
 pydantic==2.6.4
+httpx==0.27.2
 
 # --- AI & LangChain Ecosystem ---
-langchain-ollama==0.1.0
-langchain-huggingface==0.0.3
-langchain-chroma==0.1.2
 langchain-core==0.2.10
 
-# --- Embeddings & Vector DB ---
-sentence-transformers==3.0.1
-chromadb==0.5.0
-
-# --- MCP (Model Context Protocol) ---
-mcp==0.8.0
-
-# --- PDF Extraction ---
+# --- PDF Extraction & Testing ---
 PyMuPDF==1.24.0
+pytest==8.3.4
+pytest-cov==6.0.0
