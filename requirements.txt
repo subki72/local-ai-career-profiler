@@ -12,5 +12,5 @@ langchain-core==0.2.10
 
 # --- PDF Extraction & Testing ---
 PyMuPDF==1.24.0
-pytest==8.3.4
+pytest==8.4.2
 pytest-cov==6.0.0
