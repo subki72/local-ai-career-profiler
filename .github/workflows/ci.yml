@@ -63,7 +63,7 @@ jobs:
             pytest-cov==6.0.0
 
       - name: Run Pytest with Coverage Gate
-        run: pytest -v --cov=src --cov-report=term-missing --cov-fail-under=40
+        run: python -m pytest -v --cov=src --cov-report=term-missing --cov-fail-under=40
 
   build-and-security:
     name: Docker Build & Security Scans
@@ -83,7 +83,7 @@ jobs:
         run: docker build -t cv-nexus:ci .
 
       - name: Run Trivy Container Vulnerability Scanner
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: cv-nexus:ci
           format: table

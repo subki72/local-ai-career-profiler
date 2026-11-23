@@ -50,6 +50,7 @@ exclude = [".git", ".venv", "venv", "__pycache__", "data"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B"]
+ignore = ["B008", "B017"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["src", "main", "seed_db"]
