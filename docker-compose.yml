@@ -1,0 +1,52 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cv-nexus-api
+    ports:
+      - "8000:8000"
+    environment:
+      ALLOWED_ORIGINS: "${ALLOWED_ORIGINS:-http://localhost:8501,http://localhost:3000}"
+      MAX_UPLOAD_SIZE_MB: "${MAX_UPLOAD_SIZE_MB:-10}"
+      UPLOAD_DIR: "/app/data/processed"
+      OLLAMA_BASE_URL: "${OLLAMA_BASE_URL:-http://host.docker.internal:11434}"
+      OLLAMA_MODEL: "${OLLAMA_MODEL:-llama3}"
+      CHROMA_DB_DIR: "/app/data/chroma_db"
+      LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - chroma_data:/app/data/chroma_db
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cv-nexus-ui
+    command:
+      - "streamlit"
+      - "run"
+      - "src/frontend/app.py"
+      - "--server.port=8501"
+      - "--server.address=0.0.0.0"
+    ports:
+      - "8501:8501"
+    environment:
+      API_BASE_URL: "http://api:8000"
+      REQUEST_TIMEOUT_SECONDS: "${REQUEST_TIMEOUT_SECONDS:-120}"
+      LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
