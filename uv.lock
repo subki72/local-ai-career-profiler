@@ -1,0 +1,41 @@
+version = 1
+requires-python = ">=3.10"
+
+[[package]]
+name = "local-ai-career-profiler"
+version = "1.0.0"
+source = { editable = "." }
+dependencies = [
+    { name = "chromadb", version = "0.5.0" },
+    { name = "fastapi", version = "0.110.0" },
+    { name = "langchain-chroma", version = "0.1.2" },
+    { name = "langchain-core", version = "0.2.10" },
+    { name = "langchain-huggingface", version = "0.0.3" },
+    { name = "langchain-ollama", version = "0.1.0" },
+    { name = "mcp", version = "0.8.0" },
+    { name = "pydantic", version = "2.6.4" },
+    { name = "pymupdf", version = "1.24.0" },
+    { name = "python-multipart", version = "0.0.9" },
+    { name = "requests", version = "2.31.0" },
+    { name = "sentence-transformers", version = "3.0.1" },
+    { name = "streamlit", version = "1.32.2" },
+    { name = "uvicorn", version = "0.29.0" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "chromadb", specifier = "==0.5.0" },
+    { name = "fastapi", specifier = "==0.110.0" },
+    { name = "langchain-chroma", specifier = "==0.1.2" },
+    { name = "langchain-core", specifier = "==0.2.10" },
+    { name = "langchain-huggingface", specifier = "==0.0.3" },
+    { name = "langchain-ollama", specifier = "==0.1.0" },
+    { name = "mcp", specifier = "==0.8.0" },
+    { name = "pydantic", specifier = "==2.6.4" },
+    { name = "pymupdf", specifier = "==1.24.0" },
+    { name = "python-multipart", specifier = "==0.0.9" },
+    { name = "requests", specifier = "==2.31.0" },
+    { name = "sentence-transformers", specifier = "==3.0.1" },
+    { name = "streamlit", specifier = "==1.32.2" },
+    { name = "uvicorn", specifier = "==0.29.0" },
+]
