@@ -14,7 +14,7 @@ langchain-chroma==0.1.2
 langchain-core==0.2.10
 sentence-transformers==3.0.1
 chromadb==0.5.0
-mcp==0.8.0
+mcp==0.9.1
 PyMuPDF==1.24.0
 
 # --- QA, Linting & Offline Testing ---
